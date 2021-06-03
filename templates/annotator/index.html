@@ -38,18 +38,33 @@
     </header>
 
 
-
     <form id="regForm" action="" method="post">
         {% csrf_token %}
 
 
 
+        <div class="tab" >
+          <h1>Register:</h1>
+           <p>Description</br>
+               Coronaviruses (CoV) are a large family of viruses that cause illness ranging from the common cold to more severe diseases such as Middle East Respiratory Syndrome (MERS-CoV) and Severe Acute Respiratory Syndrome (SARS-CoV). A novel coronavirus (nCoV) is a new strain that has not been previously identified in humans.
+
+               Coronaviruses are zoonotic, meaning they are transmitted between animals and people. Detailed investigations found that SARS-CoV was transmitted from civet cats to humans and MERS-CoV from dromedary camels to humans. Several known coronaviruses are circulating in animals that have not yet infected humans.
+
+                   Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death.
+
+               Standard recommendations to prevent infection spread include regular hand washing, covering mouth and nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone showing symptoms of respiratory illness such as coughing and sneezing.
+
+           </p>
+            <p>Name: <span>{{form.name}}</span> </p>
+            <p>Document: <span>{{form.document}}</span> </p>
+
+        </div>
+
 
 
     <!-- One "tab" for each step in the form: -->
 
-
-        <div class="tab">
+         <div class="tab">
 
             <h2 style="text-center">Page1</h2>
 
@@ -72,22 +87,21 @@
             <p><strong>Comment:</strong>{{form1.p1q3}}</p>
 
             <p><strong>Rating:</strong>{{form1.p1q4}}</p>
-            <input type="range" min="-1" max="1" value="0" id="myRange1" class="slider">
-            <p><strong>Value:</strong><span  id="value1"></span> </p>
+            <input type="range" min="-1" max="1" value="0" id="myRange1" class="slider" oninput="myfun()">
+            <p><strong>Value:</strong><span  id="value1"> </span></p>
 
             <script>
 
-                var slider = document.getElementById("myRange1");
-                var output = document.getElementById("value1");
                 var input = document.querySelector("#id_p1q4");
-                input.value = 0;
+                input.value = "0";
                 console.log(input.value);
                 input.style.display="none";
                 output.innerHTML = slider.value;
 
-                slider.oninput = function() {
-                    input.value = this.value;
-                    output.innerHTML = this.value;
+                function myfun() {
+                    var slider = document.getElementById("myRange1");
+                    var output = document.getElementById("value1");
+                    output.innerHTML = slider.value;
                 }
                 slider.addEventListener("mousemove",function(){
                     var x = slider.value;
@@ -97,6 +111,9 @@
             </script>
 
         </div>
+
+
+
 
         <div class="tab">
 
@@ -118,33 +135,37 @@
             <input type="checkbox" name="p2q2" value="item_key3">
             <label for="item_key3"> I have a boat</label><br>
 
-            <p><strong>Comment:</strong>{{form2.comment}}</p>
+            <p><strong>Comment:</strong>{{form2.p2q3}}</p>
 
-            <p><strong>Rating:</strong>{{form2.rating}}</p>
-            <input type="range" min="-1" max="1" value="100" id="myRange2" class="slider">
-            <p><strong>Value:</strong><span id="value2"></span> </p>
+            <p><strong>Rating:</strong>{{form2.p2q4}}</p>
+            <input type="range" min="-1" max="1" value="0" id="myRange2" class="slider" oninput="myfun1()">
+            <p><strong>Value:</strong><span id="value2">0</span> </p>
 
             <script>
-                var slider = document.getElementById("myRange2");
-                var output = document.getElementById("value2");
-                var input = document.querySelector("#id_rating");
-                input.value = 0;
-                input.style.display="none";
-                output.innerHTML = slider.value;
 
 
-                slider.oninput = function() {
-                    input.value = this.value;
-                    output.innerHTML = this.value;
+                function myfun1() {
+                    var input = document.querySelector("#id_p2q4");
+                    input.value=0;
+                    input.style.display="none";
+                    var slider = document.getElementById("myRange2");
+                    var output = document.getElementById("value2");
+                    output.innerHTML = slider.value;
+                    input.value=slider.value;
+
                 }
-                slider.addEventListener("mousemove",function(){
-                    var x =slider.value;
-                    var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
-                    slider.style.background = color;
-                })
+                // slider.addEventListener("mousemove",function(){
+                //     var x = slider.value;
+                //     var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
+                //     slider.style.background = color;
+                // })
             </script>
 
         </div>
+
+
+
+
 
         <div class="tab">
 
@@ -166,34 +187,38 @@
             <input type="checkbox" name="p3q2" value="item_key3">
             <label for="item_key3"> I have a boat</label><br>
 
-            <p><strong>Comment:</strong>{{form3.comment}}</p>
+            <p><strong>Comment:</strong>{{form3.p3q3}}</p>
 
-            <p><strong>Rating:</strong>{{form3.rating}}</p>
-            <input type="range" min="-1" max="1" value="100" id="myRange" class="slider">
-            <p><strong>Value:</strong><span id="value"></span> </p>
-
+            <p><strong>Rating:</strong>{{form3.p3q4}}</p>
+            <input type="range" min="-1" max="1" value="0" id="myRange3" class="slider" oninput="myfun2()">
+            <p><strong>Value:</strong><span id="value3">0</span> </p>
 
             <script>
-                var slider = document.getElementById("myRange");
-                var output = document.getElementById("value");
-                var input = document.querySelector("#id_rating");
-                input.value = 0;
-                input.style.display="none";
-                output.innerHTML = slider.value;
+                // var input = document.querySelector("#id_p3q4");
+                // input.value = "0";
+                // console.log(input.value);
+                // input.style.display="none";
+                // output.innerHTML = slider.value;
 
-
-                slider.oninput = function() {
-                    input.value = this.value;
-                    output.innerHTML = this.value;
+                function myfun2() {
+                    var input = document.querySelector("#id_p3q4");
+                    var slider = document.getElementById("myRange3");
+                    var output = document.getElementById("value3");
+                    output.innerHTML = slider.value;
+                    input.value=slider.value;
+                    input.style.display="none";
                 }
-                slider.addEventListener("mousemove",function(){
-                    var x =slider.value;
-                    var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
-                    slider.style.background = color;
-                })
+                // slider.addEventListener("mousemove",function(){
+                //     var x = slider.value;
+                //     var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
+                //     slider.style.background = color;
+                // })
             </script>
 
         </div>
+
+
+
 
         <div class="tab">
 
@@ -215,34 +240,37 @@
             <input type="checkbox" name="p4q2" value="item_key3">
             <label for="item_key3"> I have a boat</label><br>
 
-            <p><strong>Comment:</strong>{{form4.comment}}</p>
+            <p><strong>Comment:</strong>{{form4.p4q3}}</p>
 
-            <p><strong>Rating:</strong>{{form4.rating}}</p>
-            <input type="range" min="-1" max="1" value="100" id="myRange" class="slider">
-            <p><strong>Value:</strong><span id="value"></span> </p>
+            <p><strong>Rating:</strong>{{form4.p4q4}}</p>
+            <input type="range" min="-1" max="1" value="0" id="myRange4" class="slider" oninput="myfun3()">
+            <p><strong>Value:</strong><span id="value4">0</span> </p>
 
             <script>
-                var slider = document.getElementById("myRange");
-                var output = document.getElementById("value");
-                var input = document.querySelector("#id_rating");
-                input.value = 0;
-                input.style.display="none";
-                output.innerHTML = slider.value;
+                // var input = document.querySelector("#id_p4q4");
+                // input.value = "0";
+                // console.log(input.value);
+                // input.style.display="none";
+                // output.innerHTML = slider.value;
 
-
-                slider.oninput = function() {
-                    input.value = this.value;
-                    output.innerHTML = this.value;
+                function myfun3() {
+                    var input = document.querySelector("#id_p4q4");
+                    var slider = document.getElementById("myRange4");
+                    var output = document.getElementById("value4");
+                    output.innerHTML = slider.value;
+                    input.value=slider.value;
+                    input.style.display="none";
                 }
-                slider.addEventListener("mousemove",function(){
-                    var x =slider.value;
-                    var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
-                    slider.style.background = color;
-                })
+                // slider.addEventListener("mousemove",function(){
+                //     var x = slider.value;
+                //     var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
+                //     slider.style.background = color;
+                // })
             </script>
 
 
         </div>
+
 
         <div class="tab">
 
@@ -264,31 +292,34 @@
             <input type="checkbox" name="p5q2" value="item_key3">
             <label for="item_key3"> I have a boat</label><br>
 
-            <p><strong>Comment:</strong>{{form5.comment}}</p>
+            <p><strong>Comment:</strong>{{form5.p5q3}}</p>
 
-            <p><strong>Rating:</strong>{{form5.rating}}</p>
-            <input type="range" min="-1" max="1" value="100" id="myRange" class="slider">
-            <p><strong>Value:</strong><span id="value"></span> </p>
+            <p><strong>Rating:</strong>{{form5.p5q4}}</p>
+            <input type="range" min="-1" max="1" value="0" id="myRange5" class="slider" oninput="myfun4()">
+            <p><strong>Value:</strong><span id="value5">0</span> </p>
 
             <script>
-                var slider = document.getElementById("myRange");
-                var output = document.getElementById("value");
-                var input = document.querySelector("#id_rating");
-                input.value = 0;
-                input.style.display="none";
-                output.innerHTML = slider.value;
+                // var input = document.querySelector("#id_p5q4");
+                // input.value = "0";
+                // console.log(input.value);
+                // input.style.display="none";
+                // output.innerHTML = slider.value;
 
-
-                slider.oninput = function() {
-                    input.value = this.value;
-                    output.innerHTML = this.value;
+                function myfun4() {
+                    var input = document.querySelector("#id_p5q4");
+                    var slider = document.getElementById("myRange5");
+                    var output = document.getElementById("value5");
+                    output.innerHTML = slider.value;
+                    input.value=slider.value;
+                    input.style.display="none";
                 }
-                slider.addEventListener("mousemove",function(){
-                    var x =slider.value;
-                    var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
-                    slider.style.background = color;
-                })
+                // slider.addEventListener("mousemove",function(){
+                //     var x = slider.value;
+                //     var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
+                //     slider.style.background = color;
+                // })
             </script>
+
 
 
 
@@ -321,37 +352,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <form action="" method="post">
-        {% csrf_token %}
-        {{ form1 }}
-        {% for radio in form.survey %}
-        <div class="myradio">
-        {{ radio }}
-        </div>
-        {% endfor %}
-
-         <div class="slideContainer">
-            <input type="range" min="-1" max="1" value="100" id="myRange" class="slider">
-            <p>Value:<span id="value"></span> </p>
-        </div>
-
-    <input type="submit" value="Submit">
-    </form>
-
 </body>
+
+
+
+
+
+
 
 
 
@@ -382,27 +389,6 @@
 
 
 
-<script>
-
-
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("value");
-    var input = document.querySelector("#id_rating");
-    input.value = 0;
-    input.style.display="none";
-    output.innerHTML = slider.value;
-
-
-    slider.oninput = function() {
-        input.value = this.value;
-        output.innerHTML = this.value;
-    }
-    slider.addEventListener("mousemove",function(){
-        var x =slider.value;
-        var color = 'linear-gradient(90deg, rgb(117,252,117)' + x + '%, rgb(214,214,214)'  + x +'%)';
-        slider.style.background = color;
-    })
-</script>
 <script>
 
     var currentTab = 0; // Current tab is set to be the first tab (0)

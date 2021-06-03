@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import survey
+from .models import survey,Page1, Page2, Page3, Page4, Page5
 from .forms import SurveyForm, Page1Form, Page2Form, Page3Form, Page4Form, Page5Form
 from django.http import JsonResponse
 import json
@@ -26,11 +26,11 @@ def index(request):
             f = form5.save(commit= False)
 
 
-            b.name=a.name
-            c.name=a.name
-            d.name = a.name
-            e.name=a.name
-            f.name = a.name
+            b.name= a
+            c.name= a
+            d.name = a
+            e.name= a
+            f.name = a
 
             b.save()
             c.save()
@@ -57,13 +57,10 @@ def index(request):
 
 
 def json(request):
-    data1=list(Page1.objects.values())
+    data1 = list(Page1.objects.values())
     data2 = list(Page2.objects.values())
     data3 = list(Page3.objects.values())
-    data4=list(Page4.objects.values())
-    data5=list(Page5.objects.values())
+    data4 = list(Page4.objects.values())
+    data5 = list(Page5.objects.values())
 
-    return JsonResponse(data1, data2, data3, data4, data5, safe=False)
-
-
-
+    return JsonResponse(data1, safe=False)

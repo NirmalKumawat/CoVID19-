@@ -26,7 +26,7 @@ class Page1(models.Model):
     p1q4 = models.CharField(max_length=20, null = True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
 
 
 class Page2(models.Model):
@@ -47,7 +47,7 @@ class Page2(models.Model):
     p2q4 = models.CharField(max_length=20, null = True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
 
 class Page3(models.Model):
 
@@ -67,7 +67,7 @@ class Page3(models.Model):
     p3q4 = models.CharField(max_length=20, null = True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
 
 class Page4(models.Model):
 
@@ -87,7 +87,7 @@ class Page4(models.Model):
     p4q4 = models.CharField(max_length=20, null = True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
 
 class Page5(models.Model):
 
@@ -107,4 +107,4 @@ class Page5(models.Model):
     p5q4 = models.CharField(max_length=20, null = True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
