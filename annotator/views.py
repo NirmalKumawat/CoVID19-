@@ -15,8 +15,9 @@ def index(request):
         form4 = Page4Form(request.POST)
         form5 = Page5Form(request.POST)
 
-
+        print (form.errors)
         if form.is_valid() and form1.is_valid() and form2.is_valid() and form3.is_valid() and form4.is_valid() and form5.is_valid():
+            print (form.errors)
             print('valid')
             a = form.save()
             b = form1.save(commit= False)
@@ -27,10 +28,25 @@ def index(request):
 
 
             b.name= a
-            c.name= a
+            b.document = a
+            b.uploaded_at = a
+
+            c.name = a
+            c.document = a
+            c.uploaded_at = a
+
             d.name = a
-            e.name= a
+            d.document = a
+            d.uploaded_at = a
+
+            e.name = a
+            e.document = a
+            e.uploaded_at = a
+
             f.name = a
+            f.document = a
+            f.uploaded_at = a
+
 
             b.save()
             c.save()
@@ -57,7 +73,8 @@ def index(request):
 
 
 def json(request):
-    data1 = list(Page1.objects.values())
+
+    data1 = list(survey.objects.values())
     data2 = list(Page2.objects.values())
     data3 = list(Page3.objects.values())
     data4 = list(Page4.objects.values())
